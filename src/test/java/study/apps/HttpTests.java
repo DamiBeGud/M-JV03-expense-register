@@ -1,0 +1,3 @@
+package study.apps;
+import org.junit.jupiter.api.Test;import org.springframework.test.web.servlet.setup.MockMvcBuilders;import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+class HttpTests{@Test void servletRoutingWithFakeRepository()throws Exception{var mvc=MockMvcBuilders.standaloneSetup(new Controller(new Domain(new DomainTests.Fake()))).setControllerAdvice(new Errors()).build();mvc.perform(post("/expenses").header("Authorization","Bearer synthetic-unit-token").contentType("application/json").content("{\"reference\":\"route-case\",\"category\":\"food\",\"amountMinor\":100}")).andExpect(status().isCreated());}}
